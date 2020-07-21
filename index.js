@@ -1,8 +1,13 @@
 const express = require('express')
-const cors = require('cors')
+const cors = require('cors') // for cross domain access
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use(express.static('build'))
+// for serving static files of frontend
+// 每当 express 收到一个 HTTP GET 请求时，它都会首先检查build 目录是否包含与请求地址对应的文件。
+// 如果找到正确的文件，express 将返回该文件。
+
 
 let notes = [
     {
