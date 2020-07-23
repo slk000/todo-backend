@@ -1,17 +1,18 @@
 const mongoose = require('mongoose')
-const url = process.env.MONGODB_URI
-console.log(`connecting to ${url}`)
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => {
-    console.log('connected')
-  })
-  .catch(error => {
-    console.log('error connecting:', error.message)
-  })
+
+// DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
+mongoose.set('useFindAndModify', false)
 
 const noteSchema = new mongoose.Schema({
-  content: String,
-  date: Date,
+  content: {
+    type: String,
+    minlength: 5,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true
+  },
   important: Boolean
 })
 

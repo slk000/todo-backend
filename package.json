@@ -10,7 +10,8 @@
     "deploy": "git push heroku master",
     "build:ui": "rm -rf build && cd ../frontend/ && npm run build --prod && cp -r build ../backend/",
     "deploy:full": "npm run build:ui && git add . && git commit -m '..' && npm run deploy",
-    "logs:prod": "heroku logs --tail"
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "mongoose": "^5.9.25"
   },
   "devDependencies": {
+    "eslint": "^7.5.0",
     "nodemon": "^2.0.4"
   }
 }
