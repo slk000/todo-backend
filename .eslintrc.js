@@ -2,7 +2,8 @@ module.exports = {
     'env': {
         'node': true,
         'commonjs': true,
-        'es2020': true
+        'es2020': true,
+        'jest': true
     },
     'extends': 'eslint:recommended', // 我们的默认配置从 eslint:recommended来的:
     'parserOptions': {

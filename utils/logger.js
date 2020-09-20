@@ -3,11 +3,16 @@
 // 比如 graylog 或者 papertrail ，我们只需要在一个地方进行修改就可以了。
 
 const info = (...params) => {
-  console.log(...params)
+  if (process.env.NODE_ENV !== 'test') {
+    console.log(...params)
+  }
+  
 }
 
 const error = (...params) => {
-  console.error(...params)
+  if (process.env.NODE_ENV !== 'test') {
+    console.error(...params)
+  }
 }
 
 module.exports = {

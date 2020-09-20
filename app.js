@@ -1,8 +1,11 @@
 const config = require('./utils/config')
 const express = require('express')
 const app = express()
+require('express-async-errors') //  用于消除try-catch
 // const cors = require('cors') // for cross domain access
 const notesRouter = require('./controllers/notes')
+const usersRouter = require('./controllers/user')
+const loginRouter = require('./controllers/login')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
@@ -28,6 +31,8 @@ app.use(express.json())
 app.use(middleware.requestLogger)
 
 app.use('/api/notes', notesRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
@@ -39,7 +44,7 @@ process.on('SIGINT', function () {
   process.exit()
 })
 
-
+console.log(process.env.SECRET)
 
 
 module.exports = app

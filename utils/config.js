@@ -6,6 +6,10 @@ require('dotenv').config() // 使用 .env 文件中定义的环境变量。您�
 let PORT = process.env.PORT
 let MONGODB_URI = process.env.MONGODB_URI
 
+if (process.env.NODE_ENV == 'test') {
+  MONGODB_URI = process.env.TEST_MONGODB_URI
+}
+
 module.exports = {
   MONGODB_URI,
   PORT
